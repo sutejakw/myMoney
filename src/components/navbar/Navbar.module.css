@@ -13,8 +13,8 @@
   align-items: center;
 }
 
-.navbar ul li {
-  padding-right: 10px;
+.navbar ul > li {
+  padding: 0 15px;
 }
 
 .title {
@@ -24,8 +24,7 @@
   font-size: 1.2em;
 }
 
-.navbar button,
-.navbar a {
+.navbar button {
   margin-left: 16px;
 }
 
