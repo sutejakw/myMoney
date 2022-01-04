@@ -43,6 +43,9 @@
   display: block;
   width: 100%;
 }
+.sidebar button .disabled {
+  opacity: 0.6;
+}
 .sidebar h3 {
   color: #1f9751;
   margin-bottom: 20px;

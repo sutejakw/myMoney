@@ -12,7 +12,7 @@ export default function Home() {
     <div className={styles.container}>
       <div className={styles.content}>Transaction list</div>
       <div className={styles.sidebar}>
-        <TransactionForm uid={user} />
+        <TransactionForm uid={user.uid} />
       </div>
     </div>
   );

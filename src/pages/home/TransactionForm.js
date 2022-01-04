@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useFirestore } from "../../hooks/useFirestore";
 
 export default function TransactionForm({ uid }) {
   const [name, setName] = useState("");
   const [amount, setAmount] = useState("");
-  const { addDocument, response } = useFirestore("transaction");
+  const { addDocument, response } = useFirestore("transactions");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,6 +15,14 @@ export default function TransactionForm({ uid }) {
     });
   };
 
+  useEffect(() => {
+    if (response.success) {
+      console.log(response);
+      setName("");
+      setAmount("");
+    }
+  }, [response.success]);
+
   return (
     <>
       <h3>Add a Teransaction</h3>
@@ -23,10 +31,10 @@ export default function TransactionForm({ uid }) {
           <span>Transaction name:</span>
           <input
             type="text"
-            required
             onChange={(e) => setName(e.target.value)}
             autoComplete="on"
             value={name}
+            required
           />
         </label>
 
@@ -34,14 +42,15 @@ export default function TransactionForm({ uid }) {
           <span>Amount ($):</span>
           <input
             type="number"
-            required
             onChange={(e) => setAmount(e.target.value)}
             autoComplete="on"
             value={amount}
+            required
           />
         </label>
 
-        <button>Add Transaction</button>
+        {!response.isPending && <button>Add Transaction</button>}
+        {response.isPending && <button disabled>Loading...</button>}
       </form>
     </>
   );
