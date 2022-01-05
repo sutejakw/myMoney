@@ -17,6 +17,10 @@
   padding: 0 15px;
 }
 
+.navbar ul > li:first-child {
+  padding: 0;
+}
+
 .title {
   margin-right: auto;
   font-weight: bold;
